@@ -46,19 +46,35 @@ if(empty($_POST)){
         if(isset($_GET['editar'])){
             $entrada_id = $_GET['editar'];
             $usuario_id = $_SESSION['usuario']['usuario_id']; // guardariamos el usuario id en una variable para usarlo en la consulta sql
-            $sql = "UPDATE entrada SET titulo = '$titulo', contenido = '$contenido', categoria_id = $categoria, ".
+            $sql = "UPDATE entrada SET titulo = '$titulo',slug = '$slug', contenido = '$contenido', categoria_id = $categoria, ".
             "fecha_actualizacion = NOW() WHERE entrada_id = $entrada_id AND usuario_id = $usuario_id"; 
+            $guardar = mysqli_query($bd, $sql);
+            $sqlSlug = "SELECT slug FROM entrada WHERE entrada_id = $entrada_id";
+            $resultado = mysqli_query($bd, $sqlSlug);
+            $entrada = mysqli_fetch_assoc($resultado);
+
+            if($guardar){
+                $_SESSION['completado'] = "Se ha editado con éxito la entrada";
+            }else{
+                $_SESSION['errores']['general'] = "Error al editar";
+            }
+
+            header("Location: editar-entrada.php?slug=".$entrada['slug']);
+            exit();
         }else{
         $sql = "INSERT INTO entrada (entrada_id, usuario_id, categoria_id, titulo, slug, imagen, contenido, fecha_registro, fecha_actualizacion) VALUES (null, $usuario, $categoria, '$titulo','$slug','$nombreImagen', '$contenido', NOW(), NOW());";
         }
         $guardar = mysqli_query($bd, $sql);
-        if($guardar){
-            $_SESSION['completado'] = "Se ha creado con exito la entrada";
+        
+        if($guardar && isset($_GET['slug'])){
+            $_SESSION['completado'] = "Se ha editado con exito la entrada";
+            header("Location: editar-entrada?slug=". $_GET['slug']);
         }else{
+            $_SESSION['errores']['general'] = "Fallo al editar la entrada!";
+        }
+        if(empty($guardar)){
             $_SESSION['errores']['general'] = "Fallo al crear la entrada!";
         }
-        header("Location: crear-categoria.php");
-
     }else{
     $_SESSION['errores_entrada'] = $errores; // guardamos los errores en la session para mostrarlos despues
     if(isset($_GET['editar'])){

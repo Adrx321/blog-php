@@ -3,7 +3,7 @@
 <?php require_once __DIR__ . '/includes/helpers.php'; ?>
 
 <?php
-$entrada_actual = conseguirEntrada($bd, $_GET['id']);
+$entrada_actual = conseguirEntradaSlug($bd, $_GET['slug']);
 
 if(empty($entrada_actual)){
     header("Location: index.php");
@@ -26,6 +26,15 @@ if(empty($entrada_actual)){
 
 <!-- CAJA PRINCIPAL -->
 <div id="principal">
+    <?php if(isset($_SESSION['completado'])): ?>
+        <div class="alert alert-success" role="alert">
+            <?= $_SESSION['completado'] ?>
+        </div>
+        <?php elseif(isset($_SESSION['errores']['general'])): ?>
+            <div class="alert alert-danger" role="alert">
+                <?= $_SESSION['errores']['general'] ?>
+            </div>
+    <?php endif; ?>
     <h1>Editar Entrada</h1>
     <p class="text-dark text-center">
         Edita tu entrada <?= $entrada_actual['titulo'] ?>

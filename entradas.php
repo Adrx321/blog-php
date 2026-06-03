@@ -7,7 +7,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="">Inicio</a>
+            <a href="index.php">Inicio</a>
         </li>
         <li class="breadcrumb-item active">
             <a href="">Entradas</a>
@@ -26,7 +26,7 @@
         ?>
         <div class="col-sm-6">
             <div class="card m-4">
-                <a href="entrada.php?id=<?= $entrada['slug']?>" class="text-decoration-none"> <!-- me lleva aver el detalle de la entrada y poder hacer abm de ella -->
+                <a href="entrada.php?slug=<?= $entrada['slug']?>" class="text-decoration-none"> <!-- me lleva aver el detalle de la entrada y poder hacer abm de ella -->
                     <div class="card-body">
                         <h5 class="card-tittle"><?= $entrada['titulo'] ?></h5>
                         <p class="card-text"><small class="text-dark"><?= substr($entrada['contenido'], 0,180). "..." ?></small></p>

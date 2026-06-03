@@ -18,9 +18,6 @@ require_once __DIR__ . '/includes/header.php';
             <a href="index.php">Inicio</a>
         </li>
         <li class="breadcrumb-item">
-            <a href="">Entrada</a>
-        </li>
-        <li class="breadcrumb-item">
             <a href=""><?= $entrada_actual['titulo'] ?></a>
         </li>
     </ol>
