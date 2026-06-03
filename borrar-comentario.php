@@ -8,11 +8,17 @@ if(isset($_SESSION['usuario']) && isset($_GET['id'])){ /* si esque existen ambos
     $usuario_id = $_SESSION['usuario']['usuario_id'];
     if(esAdmin()){
         $sql = "DELETE from comentario WHERE comentario_id = $comentario_id;";
+        $borrar = mysqli_query($bd, $sql);
+        if($borrar){
+        $_SESSION['completado'] = "Se borro exitosamente";
+        }   
     }else{
         $sql = "DELETE FROM comentario WHERE usuario_id = $usuario_id AND comentario_id = $comentario_id;";
+        $borrar = mysqli_query($bd, $sql);
+        if($borrar){
+        $_SESSION['completado'] = "Se borro exitosamente";
+        }
     }
-    
-    $borrar = mysqli_query($bd, $sql);
 
 }
 header("Location: entrada.php?slug=".$_GET['slug']);

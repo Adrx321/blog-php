@@ -50,12 +50,13 @@ require_once __DIR__ . '/includes/header.php';
         ?>
         <br>
         <a href="editar-entrada.php?slug=<?= $entrada_actual['slug'] ?>" type="button" class="btn btn-outline-dark">Editar Entrada</a>
+        <?php endif; ?>
+        <?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']['usuario_id'] == $entrada_actual['usuario_id'] || esAdmin()): ?>
         <a href="borrar-entrada.php?slug=<?= $entrada_actual['slug'] ?>" type="button" class="btn btn-outline-dark">Eliminar Entrada</a>
+        
         <?php endif; ?>
     </div>
     
-    
-
 
 </div> <!-- FIN PRINCIPAL -->
 
@@ -78,8 +79,11 @@ require_once __DIR__ . '/includes/header.php';
                 ?>
                 <br>
                 <a href="editar-comentario.php?id=<?= $comentario['comentario_id'] ?>" type="button" class="btn btn-outline-dark">Editar Comentario</a>
+                <?php endif;?>
+                <?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']['usuario_id'] == $comentario['usuario_id'] || esAdmin()): ?>
                 <a href="borrar-comentario.php?id=<?= $comentario['comentario_id'] ?>&slug=<?= $entrada_actual['slug'] ?>" type="button" class="btn btn-outline-dark">Eliminar Comentario</a>
                 <?php endif; ?>
+                
             </div>
         </div>
         <?php endwhile; ?>
