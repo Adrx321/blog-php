@@ -20,7 +20,6 @@ Blog desarrollado con PHP, MySQL y Bootstrap con autenticación, CRUD de entrada
 - Bootstrap 5
 - HTML5
 - CSS3
-- JavaScript
 
 ## Base de datos
 
