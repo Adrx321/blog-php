@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 03-06-2026 a las 19:06:19
+-- Tiempo de generación: 05-06-2026 a las 03:01:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -65,7 +65,7 @@ CREATE TABLE `comentario` (
 
 INSERT INTO `comentario` (`comentario_id`, `entrada_id`, `usuario_id`, `contenido`, `fecha_creacion`, `fecha_actualizacion`) VALUES
 (11, 1, 1, 'hola que tal', '2026-06-03 12:49:09', '2026-06-03 12:49:09'),
-(12, 1, 2, 'Hola que tal gente xd', '2026-06-03 12:50:10', '2026-06-03 12:50:29');
+(13, 2, 1, 'esta bueno\r\n', '2026-06-03 19:19:06', '2026-06-03 19:19:06');
 
 -- --------------------------------------------------------
 
@@ -92,8 +92,7 @@ CREATE TABLE `entrada` (
 INSERT INTO `entrada` (`entrada_id`, `usuario_id`, `categoria_id`, `titulo`, `slug`, `imagen`, `contenido`, `fecha_registro`, `fecha_actualizacion`) VALUES
 (1, 1, 3, 'Spiderman', 'spiderman', '1780428212-spiderman.jpg', 'Luego de sufrir la picadura de una araña genéticamente modificada, un estudiante de secundaria tímido y torpe adquiere increíbles capacidades como arácnido. Pronto comprenderá que su misión es utilizarlas para luchar contra el mal y defender a sus vecinos.', '2026-06-02 15:23:32', '2026-06-02 15:23:32'),
 (2, 1, 1, 'Steins;Gate', 'steins-gate', '1780428935-SteinsGate.webp', 'Un grupo de amigos crea una máquina que envía mensajes al pasado y altera el presente.', '2026-06-02 15:35:35', '2026-06-02 17:25:45'),
-(4, 1, 3, 'Promo-semana-santa', 'promo-semana-santa', '', 'ya viene semana santa xd ', '2026-06-03 12:46:57', '2026-06-03 12:46:57'),
-(5, 2, 5, 'The boys', 'the-boys', '', 'Que final decepcionante', '2026-06-03 12:51:11', '2026-06-03 12:51:11');
+(5, 2, 5, 'The boys(serie)', 'the-boys(serie)', '', 'Que final amargo', '2026-06-03 12:51:11', '2026-06-03 17:52:49');
 
 -- --------------------------------------------------------
 
@@ -121,7 +120,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`usuario_id`, `nombre`, `apellidos`, `nombre_usuario`, `email`, `contraseña`, `avatar`, `bio`, `rol`, `fecha_registro`, `fecha_actualizacion`) VALUES
 (1, 'Gimena', 'Flores', 'gimi', 'gimi@gmail.com', '$2y$04$R8KEoTJlSmobAhLiIqLFp.l9MiEhG3UStm0zIFX9lfGDd3vAPxJYC', '1780439302-jimena.jpg', 'soy una aspirante a desarrollador web', 'admin', '2026-06-02 14:03:48', '2026-06-02 18:28:22'),
-(2, 'Adrian', 'Castillo', 'adrxsg', 'adrix@gmail.com', '$2y$04$og5jsKId1Jm/pftKL7PMvuvIq5/MFX.fOYlikzkaPr7hKSK4NBoQW', NULL, NULL, 'usuario', '2026-06-03 11:45:01', NULL);
+(2, 'Adrian', 'Castle', 'adrxsg', 'adrix@gmail.com', '$2y$04$og5jsKId1Jm/pftKL7PMvuvIq5/MFX.fOYlikzkaPr7hKSK4NBoQW', NULL, '', 'usuario', '2026-06-03 11:45:01', '2026-06-03 17:55:19');
 
 --
 -- Índices para tablas volcadas
@@ -172,7 +171,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `comentario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `comentario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `entrada`
